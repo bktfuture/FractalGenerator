@@ -5,5 +5,8 @@
 }
 
 #canvas1 {
-	background-color: black;
+	background-color: greenyellow;
+	position: absolute;
+	left: 0;
+	top: 0;
 }
