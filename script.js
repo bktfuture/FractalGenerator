@@ -1,20 +1,33 @@
 window.addEventListener('load', function () {
 	const canvas = document.getElementById('canvas1');
 	const ctx = canvas.getContext('2d');
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth * 0.8;
+	canvas.height = window.innerHeight * 0.8;
 
 	// canvas settings
-	ctx.fillStyle = 'yellow';
+	ctx.fillStyle = 'green';
 	ctx.strokeStyle = 'pink';
-	ctx.lineWidth = 20;
+	ctx.lineWidth = 10;
 	ctx.lineCap = 'round';
 
-	ctx.fillRect(50, 50, 100, 100);
-	console.log(ctx);
+	//effect settings
 
-	ctx.beginPath();
-	ctx.moveTo(canvas.width / 2, canvas.height / 2);
-	ctx.lineTo(600, 600);
-	ctx.stroke();
+	let size = 190;
+	let sides = 20;
+	ctx.save();
+	ctx.translate(canvas.width / 2, canvas.height / 2);
+	ctx.rotate(0);
+	ctx.scale(1.5, 1.5);
+
+	for (let i = 0; i < sides; i++) {
+		ctx.beginPath();
+		ctx.moveTo(0, 0);
+		ctx.lineTo(size, 0);
+		ctx.stroke();
+		ctx.rotate((Math.PI * 2) / sides);
+		ctx.scale(0.95, 0.95);
+		ctx.translate(20, 10);
+	}
+
+	ctx.restore();
 });
