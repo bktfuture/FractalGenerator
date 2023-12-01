@@ -11,23 +11,49 @@ window.addEventListener('load', function () {
 	ctx.lineCap = 'round';
 
 	//effect settings
+	let scale = 0.7;
+	let spread = 0.8;
+	let branches = 4;
+	let size = 170;
+	let sides = 4;
+	let maxLevel = 2;
 
-	let size = 190;
-	let sides = 20;
-	ctx.save();
-	ctx.translate(canvas.width / 2, canvas.height / 2);
-	ctx.rotate(0);
-	ctx.scale(1.5, 1.5);
-
-	for (let i = 0; i < sides; i++) {
+	function drawBranch(level) {
+		if (level > maxLevel) return;
 		ctx.beginPath();
 		ctx.moveTo(0, 0);
 		ctx.lineTo(size, 0);
 		ctx.stroke();
-		ctx.rotate((Math.PI * 2) / sides);
-		ctx.scale(0.95, 0.95);
-		ctx.translate(20, 10);
+
+		for (let i = 0; i < branches; i++) {
+			ctx.save();
+			ctx.translate(size - (size / branches) * i, 0);
+			ctx.rotate(spread);
+			ctx.scale(scale, scale);
+			drawBranch(level + 1);
+			ctx.restore();
+
+			ctx.save();
+			ctx.translate(size - (size / branches) * i, 0);
+			ctx.rotate(-spread);
+			ctx.scale(scale, scale);
+			drawBranch(level + 1);
+			ctx.restore();
+		}
 	}
 
-	ctx.restore();
+	function drawFractal() {
+		ctx.save();
+		ctx.translate(canvas.width / 2, canvas.height / 2);
+		ctx.rotate(0);
+		ctx.scale(0.7, 0.7);
+
+		for (let i = 0; i < sides; i++) {
+			ctx.rotate((Math.PI * 2) / sides);
+			drawBranch(0);
+		}
+		ctx.restore();
+	}
+
+	drawFractal();
 });
