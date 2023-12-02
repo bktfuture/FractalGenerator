@@ -25,6 +25,7 @@ window.addEventListener('load', function () {
 
 	// controls
 	const randomizeBtn = document.getElementById('randomizeButton');
+	const resetBtn = document.getElementById('resetButton');
 	const sliderSpread = document.getElementById('spread');
 	const labelSpread = document.querySelector('[for="spread"]');
 	const sliderSides = document.getElementById('sides');
@@ -74,6 +75,20 @@ window.addEventListener('load', function () {
 		drawFractal();
 		updateSliders();
 	});
+
+	resetBtn.addEventListener('click', function () {
+		resetFractal();
+		updateSliders();
+		drawFractal();
+	});
+
+	function resetFractal() {
+		let color = 'hsl(670, 100%,50%)';
+		let scale = 0.4;
+		let spread = 0.8;
+		let sides = 6;
+		let lineWidth = 15;
+	}
 
 	function randomizeFractal() {
 		sides = Math.floor(Math.random() * 7 + 2);
