@@ -1,8 +1,8 @@
 window.addEventListener('load', function () {
 	const canvas = document.getElementById('canvas1');
 	const ctx = canvas.getContext('2d');
-	canvas.width = window.innerWidth * 0.8;
-	canvas.height = window.innerHeight * 0.8;
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 
 	// line settings
 	ctx.lineWidth = 10;
@@ -14,12 +14,16 @@ window.addEventListener('load', function () {
 
 	// fractal settings/variables
 	let size = canvas.width < canvas.height ? canvas.width * 0.3 : canvas.height * 0.3;
+	const maxLevel = 3;
+	const branches = 2;
+
 	let color = 'hsl(670, 100%,50%)';
-	let scale = 0.38;
-	let spread = 0.5;
-	let branches = 3.4;
+	let scale = 0.4;
+	let spread = 0.8;
 	let sides = 6;
-	let maxLevel = 3;
+
+	// controls
+	const randomizeBtn = document.getElementById('randomizeButton');
 
 	function drawBranch(level) {
 		if (level > maxLevel) return;
@@ -31,26 +35,37 @@ window.addEventListener('load', function () {
 		for (let i = 0; i < branches; i++) {
 			ctx.save();
 			ctx.translate(size - (size / branches) * i, 0);
-			ctx.rotate(spread);
 			ctx.scale(scale, scale);
+			ctx.rotate(spread);
+
+			ctx.save();
+			ctx.rotate(spread);
 			drawBranch(level + 1);
 			ctx.restore();
 
 			ctx.save();
-			ctx.translate(size - (size / branches) * i, 0);
 			ctx.rotate(-spread);
-			ctx.scale(scale, scale);
 			drawBranch(level + 1);
+			ctx.restore();
 			ctx.restore();
 		}
 	}
 
+	function randomizeFractal() {
+		sides = Math.random() * 7 + 2;
+		scale = Math.random() * 0.2 + 0.6;
+		spread = Math.random() * 2.9 + 0.1;
+		color = 'hsl(' + Math.random() * 360 + ', 100%,50%)';
+		drawFractal();
+	}
+
+	randomizeBtn.addEventListener('click', randomizeFractal);
+
 	function drawFractal() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.strokeStyle = color;
 		ctx.save();
 		ctx.translate(canvas.width / 2, canvas.height / 2);
-		// ctx.rotate(0);
-		// ctx.scale(0.7, 0.7);
 
 		for (let i = 0; i < sides; i++) {
 			ctx.rotate((Math.PI * 2) / sides);
