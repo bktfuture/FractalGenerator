@@ -4,9 +4,7 @@ window.addEventListener('load', function () {
 	canvas.width = window.innerWidth * 0.8;
 	canvas.height = window.innerHeight * 0.8;
 
-	// canvas settings
-	ctx.fillStyle = 'green';
-
+	// line settings
 	ctx.lineWidth = 10;
 	ctx.lineCap = 'round';
 	ctx.shadowColor = 'rgba(0,0,0,0.7)';
@@ -14,14 +12,14 @@ window.addEventListener('load', function () {
 	ctx.shadowOffsetY = 5;
 	ctx.shadowBlur = 10;
 
-	//effect settings
-	let color = 'hsl(102, 100%,50%)';
-	let scale = 0.48;
+	// fractal settings/variables
+	let size = canvas.width < canvas.height ? canvas.width * 0.3 : canvas.height * 0.3;
+	let color = 'hsl(670, 100%,50%)';
+	let scale = 0.38;
 	let spread = 0.5;
-	let branches = 3;
-	let size = 170;
+	let branches = 3.4;
 	let sides = 6;
-	let maxLevel = 2;
+	let maxLevel = 3;
 
 	function drawBranch(level) {
 		if (level > maxLevel) return;
