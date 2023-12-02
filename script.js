@@ -27,10 +27,18 @@ window.addEventListener('load', function () {
 	const randomizeBtn = document.getElementById('randomizeButton');
 	const sliderSpread = document.getElementById('spread');
 	const labelSpread = document.querySelector('[for="spread"]');
+	const sliderSides = document.getElementById('sides');
+	const labelSides = document.querySelector('[for="sides"]');
 
 	sliderSpread.addEventListener('change', function (e) {
 		console.log(e.target.value);
 		spread = e.target.value;
+		updateSliders();
+		drawFractal();
+	});
+
+	sliderSides.addEventListener('change', function (e) {
+		sides = e.target.value;
 		updateSliders();
 		drawFractal();
 	});
@@ -93,6 +101,8 @@ window.addEventListener('load', function () {
 	function updateSliders() {
 		sliderSpread.value = spread;
 		labelSpread.innerText = `Spread: ${Number(spread).toFixed(1)}`;
+		sliderSides.value = sides;
+		labelSides.innerText = `Sides: ${Number(sides)}`;
 	}
 	updateSliders();
 });
