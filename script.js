@@ -69,6 +69,10 @@ window.addEventListener('load', function () {
 
 			ctx.restore();
 		}
+		//new code
+		ctx.beginPath();
+		ctx.arc(0, size, size * 0.1, 0, Math.PI * 2);
+		ctx.fill();
 	}
 	randomizeBtn.addEventListener('click', function () {
 		randomizeFractal();
@@ -109,11 +113,6 @@ window.addEventListener('load', function () {
 		for (let i = 0; i < sides; i++) {
 			ctx.rotate((Math.PI * 2) / sides);
 			drawBranch(0);
-
-			//new code
-			ctx.beginPath();
-			ctx.arc(0, size, 50, 0, Math.PI * 2);
-			ctx.fill();
 		}
 		ctx.restore();
 	}
