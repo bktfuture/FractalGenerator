@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
 
 	// fractal settings/variables
 	let size = canvas.width < canvas.height ? canvas.width * 0.3 : canvas.height * 0.3;
-	const maxLevel = 4;
+	const maxLevel = 10; //4
 	const branches = 2;
 
 	let color = 'hsl(670, 100%,50%)';
@@ -62,10 +62,10 @@ window.addEventListener('load', function () {
 			drawBranch(level + 1);
 			ctx.restore();
 
-			ctx.save();
-			ctx.rotate(-spread);
-			drawBranch(level + 1);
-			ctx.restore();
+			// ctx.save();
+			// ctx.rotate(-spread);
+			// drawBranch(level + 1);
+			// ctx.restore();
 
 			ctx.restore();
 		}
@@ -87,7 +87,7 @@ window.addEventListener('load', function () {
 		let scale = 0.4;
 		let spread = 0.8;
 		let sides = 6;
-		let lineWidth = 15;
+		let lineWidth = 10;
 	}
 
 	function randomizeFractal() {
@@ -95,12 +95,13 @@ window.addEventListener('load', function () {
 		scale = Math.random() * 0.2 + 0.4;
 		spread = Math.random() * 2.9 + 0.1;
 		color = 'hsl(' + Math.random() * 360 + ', 100%,50%)';
-		lineWidth = Math.floor(Math.random() * 20 + 10);
+		lineWidth = Math.floor(Math.random() * 20 + 8);
 	}
 
 	function drawFractal() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.strokeStyle = color;
+		ctx.fillStyle = color;
 		ctx.lineWidth = lineWidth;
 		ctx.save();
 		ctx.translate(canvas.width / 2, canvas.height / 2);
@@ -108,6 +109,11 @@ window.addEventListener('load', function () {
 		for (let i = 0; i < sides; i++) {
 			ctx.rotate((Math.PI * 2) / sides);
 			drawBranch(0);
+
+			//new code
+			ctx.beginPath();
+			ctx.arc(0, size, 50, 0, Math.PI * 2);
+			ctx.fill();
 		}
 		ctx.restore();
 	}
