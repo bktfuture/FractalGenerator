@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
 * {
+	font-family: 'Space Mono', monospace;
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -13,13 +16,24 @@
 }
 
 #controls {
-	position: absolute;
 	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: absolute;
+	align-items: center;
+	gap: 10px;
 	border: 2px solid white;
 	left: 20px;
 	top: 20px;
-	width: 250px;
+	width: 270px;
 	background: rgba(255, 255, 255, 0.15);
+}
+
+.box {
+	gap: 10px;
+	display: flex;
+	flex-direction: row;
 }
 
 button {
@@ -32,4 +46,18 @@ label,
 input {
 	color: white;
 	font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+	#controls {
+		width: 140px;
+	}
+	.box {
+		flex-wrap: wrap;
+	}
+	button {
+		width: 120px;
+		text-align: center;
+		padding: 10px 5px;
+	}
 }
