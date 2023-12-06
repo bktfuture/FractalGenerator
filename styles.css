@@ -18,7 +18,7 @@
 #controls {
 	background-color: rgb(110, 110, 110);
 	padding: 20px;
-	display: flex;
+	display: none;
 	flex-direction: column;
 	justify-content: center;
 	position: absolute;
@@ -47,13 +47,34 @@
 button {
 	padding: 10px 40px;
 	width: 220px;
+	background-color: white;
 	font-size: 20px;
+}
+#hideButton {
+	width: 70px;
+	text-align: center;
+	padding: 0 10px;
 }
 
 label,
 input {
 	color: white;
 	font-size: 20px;
+}
+
+.toggleControls {
+	background-color: white;
+	/* border-radius: 50px; */
+	position: fixed;
+	top: 30px;
+	left: 30px;
+	width: 160px;
+	height: 50px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
 }
 
 @media screen and (max-width: 800px) {

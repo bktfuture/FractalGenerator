@@ -6,6 +6,9 @@ window.addEventListener('load', function () {
 	const colorPicker = document.getElementById('colorPicker');
 	const canvasPicker = document.getElementById('canvasPicker');
 	const canvas1 = document.getElementById('canvas1');
+	const btnControls = document.querySelector('.toggleControls');
+	const controls = document.getElementById('controls');
+	const hideBtn = document.getElementById('hideButton');
 
 	// line settings
 
@@ -34,10 +37,18 @@ window.addEventListener('load', function () {
 	const sliderSides = document.getElementById('sides');
 	const labelSides = document.querySelector('[for="sides"]');
 
+	btnControls.addEventListener('click', () => {
+		btnControls.style.display = 'none';
+		controls.style.display = 'flex';
+	});
 	colorPicker.addEventListener('change', function (e) {
 		color = e.target.value;
 		console.log(e.target.value);
 		drawFractal();
+	});
+	hideBtn.addEventListener('click', () => {
+		btnControls.style.display = 'flex';
+		controls.style.display = 'none';
 	});
 
 	canvasPicker.addEventListener('change', function (e) {
