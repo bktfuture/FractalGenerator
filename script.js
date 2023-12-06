@@ -4,6 +4,8 @@ window.addEventListener('load', function () {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
 	const colorPicker = document.getElementById('colorPicker');
+	const canvasPicker = document.getElementById('canvasPicker');
+	const canvas1 = document.getElementById('canvas1');
 
 	// line settings
 
@@ -38,8 +40,10 @@ window.addEventListener('load', function () {
 		drawFractal();
 	});
 
+	canvasPicker.addEventListener('change', function (e) {
+		canvas1.style.backgroundColor = `${e.target.value}`;
+	});
 	sliderSpread.addEventListener('change', function (e) {
-		console.log(e.target.value);
 		spread = e.target.value;
 		updateSliders();
 		drawFractal();
