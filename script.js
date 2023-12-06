@@ -3,6 +3,7 @@ window.addEventListener('load', function () {
 	const ctx = canvas.getContext('2d');
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
+	const colorPicker = document.getElementById('colorPicker');
 
 	// line settings
 
@@ -17,7 +18,7 @@ window.addEventListener('load', function () {
 	const maxLevel = 10; //4
 	const branches = 2;
 
-	let color = 'hsl(670, 100%,50%)';
+	let color = colorPicker.value;
 	let scale = 0.4;
 	let spread = 0.8;
 	let sides = 6;
@@ -30,6 +31,12 @@ window.addEventListener('load', function () {
 	const labelSpread = document.querySelector('[for="spread"]');
 	const sliderSides = document.getElementById('sides');
 	const labelSides = document.querySelector('[for="sides"]');
+
+	colorPicker.addEventListener('change', function (e) {
+		color = e.target.value;
+		console.log(e.target.value);
+		drawFractal();
+	});
 
 	sliderSpread.addEventListener('change', function (e) {
 		console.log(e.target.value);
