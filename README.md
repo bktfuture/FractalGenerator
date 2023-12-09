@@ -2,7 +2,7 @@
 
 Vanilla JavaScript project where I use DOM manipulations and a built-in canvas library to generate beautiful fractals.
 
-Showcase:
+
 
 ![ezgif com-video-to-gif (1)](https://github.com/bktfuture/FractalGenerator/assets/86029622/515b83b0-c3d1-4886-9c47-8a3eca63ec9e)
 
