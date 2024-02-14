@@ -120,7 +120,7 @@ window.addEventListener('load', function () {
 		sides = Math.floor(Math.random() * 7 + 2);
 		scale = Math.random() * 0.2 + 0.4;
 		spread = Math.random() * 2.9 + 0.1;
-		color = 'hsl(' + Math.random() * 360 + ', 100%,50%)';
+		color = 'rgb(' + Math.random() * 360 + ', ' + Math.random() * 360 + ',' + Math.random() * 360 + ')';
 		lineWidth = Math.floor(Math.random() * 20 + 8);
 	}
 
