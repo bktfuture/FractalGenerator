@@ -11,6 +11,7 @@ window.addEventListener('load', function () {
 	const hideBtn = document.getElementById('hideButton');
 
 	// line settings
+	console.log('hi');
 
 	ctx.lineCap = 'round';
 	ctx.shadowColor = 'rgba(0,0,0,0.7)';
